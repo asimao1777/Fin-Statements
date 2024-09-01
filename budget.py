@@ -3,7 +3,20 @@ import openpyxl
 
 class FS:
 
-    def __init__(self):
+    def __init__(self, company: str, mes: str, ano: int) -> object:
+        """
+        Initialize new Financial Statement object for a
+        Company in a specific Month and Year.
+
+        :param company: a Python String (name of the Company)
+        :param mes: a Python String (name of the Month of the Financial Statements)
+        :param ano: am Integer (Year of the financial statements)
+
+        :return: does not return
+        """
+        self._company = company
+        self._mes = mes
+        self._ano = ano
         self._bs = {
                     1:    "Assets",
                     11:   "Current Assets",
@@ -172,18 +185,47 @@ class FS:
                     "F002": "Cash & Cash Equivalents at the End of Period"
                    }
 
+    def __str__(self) -> str:
+        """
+        Override string method to provide more readable output.
+
+        :param: any attribute of a FS object
+
+        :return: a Python string
+        """
+        return (f"Empresa: {self._company}\n"
+                f"Período: {self._mes} / {self._ano}")
+
+    def get_company(self):
+        return self._company
+
+    def get_mes(self):
+        return self._mes
+
+    def get_ano(self):
+        return self._ano
+
+    def get_bs(self):
+        return self._bs
+
+    def get_dre(self):
+        return self._dre
+
+    def get_cf(self):
+        return self._cf
+
+    def set_company(self, new_company):
+        self._company = new_company
+
+    def set_mes(self, new_mes):
+        self._mes = new_mes
+
+    def set_ano(self, new_ano):
+        self._ano = new_ano
 
 
-    # def get_bs(self):
-    #     return self._bs
-    #
-    # def get_dre(self):
-    #     return self._dre
-    #
-    # def get_cf(self):
-    #     return self._cf
-
-
+novo = FS("BRN", "Janeiro", 2024)
+print(novo)
 
 
 
